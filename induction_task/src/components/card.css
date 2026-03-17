@@ -1,0 +1,30 @@
+.card{
+    background-image: linear-gradient(rgba(255, 0, 0, 0.296), rgba(255, 255, 0, 0.312));
+    height: 200px;
+    max-width: 500px;
+    width: 95vw;
+    border-radius: 30px;
+    display: flex;
+    flex-direction: row;
+    border: 2px ridge white;
+    box-shadow: 2px 2px 5px rgba(255, 255, 255, 0.312);
+}
+
+.general{
+    height:180px;
+    width: auto;
+
+}
+
+.btn-bx{
+    display: flex;
+    flex-direction: column;
+    place-items: center;
+    justify-content: center;
+}
+
+.heading{
+    color: rgb(255, 255, 0);
+    font-size: 200%;
+    font: weight 100px; ;    
+}
