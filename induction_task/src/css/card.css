@@ -79,3 +79,15 @@
     gap: 40px;
     justify-content: center;
 }
+
+.box{
+     margin: 10px;
+    padding: 0;
+    height: auto;
+    line-height: 1;
+    max-width: 300px;
+    width: 95vw;
+    border-radius: 20px;
+    border: 2px solid white;
+    box-shadow: 2px 2px 5px rgba(255, 255, 255, 0.312);
+}
