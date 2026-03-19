@@ -2,13 +2,27 @@ import '../css/item_list.css';
 import {Lost_Card, Found_Card} from './card.jsx';
 import {useState, useEffect} from "react";
 
-function CreateList({ data, found_data }){
+function CreateList({ data, found_data, onUpdateLost, onUpdateFound }){
     
     const [searchQuery, setSearchQuery] = useState("");
 
     const refreshLostItems = () => {
         const items = JSON.parse(localStorage.getItem('lostItems')) || [];
         setData(items);
+    };
+
+    const resolveLost = (id) => {
+        const items = JSON.parse(localStorage.getItem('lostItems')) || [];
+        const filtered = items.filter(item => item.id !== id);
+        localStorage.setItem('lostItems', JSON.stringify(filtered));
+        if (onUpdateLost) onUpdateLost(); // Triggers re-render in parent
+    };
+
+    const resolveFound = (id) => {
+        const items = JSON.parse(localStorage.getItem('foundItems')) || [];
+        const filtered = items.filter(item => item.id !== id);
+        localStorage.setItem('foundItems', JSON.stringify(filtered));
+        if (onUpdateFound) onUpdateFound(); // Triggers re-render in parent
     };
    
     const [found_searchQuery, setFound_SearchQuery] = useState("");
@@ -40,7 +54,9 @@ function CreateList({ data, found_data }){
             <div className="item-grid">
                 {data.map((item)=>
                 item.item_lost.toLowerCase().includes(searchQuery.toLowerCase())&&(
-                    <Lost_Card item={item} key={item.id} />
+                    <Lost_Card item={item} 
+                    key={item.id} 
+                    onResolve={resolveLost} />
                 ))}
             </div>   
         </div>
@@ -58,7 +74,9 @@ function CreateList({ data, found_data }){
             <div className="item-grid">
                 {found_data.map((item, index)=>
                 item.item_found.toLowerCase().includes(found_searchQuery.toLowerCase())&&(
-                    <Found_Card item={item} key={item.id} />
+                    <Found_Card item={item} 
+                    key={item.id}
+                    onResolve={resolveFound} />
                 ))}
             </div>   
         </div>

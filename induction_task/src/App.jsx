@@ -31,7 +31,10 @@ function App() {
     <Description/>
     <br />
     <Add_cards onUpdateLost={refreshLost} onUpdateFound={refreshFound}/>
-    <CreateList data={data} found_data={found_data}/>
+    <CreateList data={data} 
+    found_data={found_data}
+    onUpdateLost={refreshLost} 
+    onUpdateFound={refreshFound}/>
    </div>
   );
 }
