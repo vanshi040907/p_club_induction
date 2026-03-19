@@ -5,7 +5,7 @@ import { useState } from 'react';
 import Lost_form from '../components/lost_form.jsx';
 import Found_form from '../components/found_form.jsx';
 
-function Add_cards(){
+function Add_cards({ onUpdateLost, onUpdateFound }){
     const [isLost_formOpen, setIsLost_formOpen] = useState(false);
     const [isFound_formOpen, setIsFound_formOpen] = useState(false);
 
@@ -17,7 +17,8 @@ function Add_cards(){
                 <div className="heading r">I LOST AN ITEM!</div>
                 <button className='re'
                 onClick={()=> setIsLost_formOpen(true)}>UPLOAD LOST ITEM</button>
-                {isLost_formOpen && <Lost_form onClose={() => setIsLost_formOpen(false)} />}
+                {isLost_formOpen && <Lost_form onClose={() => setIsLost_formOpen(false)}
+                onUpdate={onUpdateLost} />}
             </div>
 
         </div>
@@ -28,7 +29,8 @@ function Add_cards(){
                 <div className="heading g">I FOUND AN ITEM!</div>
                 <button className='gr'
                 onClick={()=> setIsFound_formOpen(true)}>UPLOAD FOUND ITEM</button>
-                {isFound_formOpen && <Found_form onClose={() => setIsFound_formOpen(false)} />}
+                {isFound_formOpen && <Found_form onClose={() => setIsFound_formOpen(false)}
+                onUpdate={onUpdateFound} />}
             </div>
 
         </div>

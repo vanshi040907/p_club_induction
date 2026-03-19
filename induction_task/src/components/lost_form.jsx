@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import '../css/form.css';
 
-function Lost_form({onClose}){
+function Lost_form({onClose, onUpdate}){
     const[formData, setFormData]=useState({
         item_lost:'',
         location:'',
@@ -21,6 +21,7 @@ function Lost_form({onClose}){
         const updatedList = [new_lost_item, ...existing_lost];
         localStorage.setItem('lostItems', JSON.stringify(updatedList));
         console.log("Form Submitted:", formData);
+        if (onUpdate) onUpdate();
         onClose();
     };
 

@@ -2,22 +2,16 @@ import '../css/item_list.css';
 import {Lost_Card, Found_Card} from './card.jsx';
 import {useState, useEffect} from "react";
 
-function CreateList(){
-    const [data, setData]= useState([]);
+function CreateList({ data, found_data }){
+    
     const [searchQuery, setSearchQuery] = useState("");
 
-    const [found_data, setFound_Data]= useState([]);
-    const [found_searchQuery, setFound_SearchQuery] = useState("");
-   
-    useEffect(()=>{
-        const items= JSON.parse(localStorage.getItem('lostItems')) || [];
+    const refreshLostItems = () => {
+        const items = JSON.parse(localStorage.getItem('lostItems')) || [];
         setData(items);
-    }, []);
-
-    useEffect(()=>{
-        const items= JSON.parse(localStorage.getItem('foundItems')) || [];
-        setFound_Data(items);
-    }, []);
+    };
+   
+    const [found_searchQuery, setFound_SearchQuery] = useState("");
      
     const handleSearch = (e)=>{
         e.preventDefault();
@@ -28,7 +22,7 @@ function CreateList(){
     const handleSearchFound = (e)=>{
         e.preventDefault();
         alert(found_searchQuery);
-        setSearchQuery("");
+        setFound_SearchQuery("");
     }
 
     return (
@@ -44,7 +38,7 @@ function CreateList(){
             </form>
 
             <div className="item-grid">
-                {data.map((item, index)=>
+                {data.map((item)=>
                 item.item_lost.toLowerCase().includes(searchQuery.toLowerCase())&&(
                     <Lost_Card item={item} key={item.id} />
                 ))}

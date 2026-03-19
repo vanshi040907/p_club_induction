@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import '../css/form.css';
 
-function Found_form({onClose}){
+function Found_form({onClose, onUpdate}){
     const[found_formData, setFound_FormData]=useState({
         item_found:'',
         location:'',
@@ -20,7 +20,7 @@ function Found_form({onClose}){
         
         const updatedList = [new_found_item, ...existing_found];
         localStorage.setItem('foundItems', JSON.stringify(updatedList));
-        console.log("Form Submitted:", found_formData);
+        if (onUpdate) onUpdate();
         onClose();
     };
 
