@@ -81,14 +81,13 @@
 }
 
 .box{
-     margin: 10px;
-    padding: 0;
+    margin: 10px;
+    padding-top: 20px;
     height: auto;
     line-height: 1;
-    max-width: 300px;
     width: 95vw;
     border-radius: 20px;
-    border: 2px solid white;
+    border: 2px solid rgba(89, 89, 148, 0.811);
     box-shadow: 2px 2px 5px rgba(255, 255, 255, 0.312);
 }
 
@@ -97,4 +96,13 @@
     max-width: 450px;
     height: auto;
     background-image: linear-gradient( rgba(89, 89, 148, 0.342), rgba(255, 255, 255, 0));
+}
+
+.resolve-btn{
+    margin-bottom: 20px;
+    height: 40px;
+    width: 250px;
+    border-radius: 20px;
+    border: 1px solid rgba(89, 89, 148, 0.811);
+    background-image: linear-gradient( rgba(190, 190, 218, 0.51), rgba(89, 89, 148, 0.811));
 }
