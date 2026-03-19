@@ -6,6 +6,8 @@ function Found_form({onClose, onUpdate}){
         item_found:'',
         location:'',
         contact_info:'',
+        description:'',
+        date:'',
     });
 
     const handleSubmit = (e)=>{
@@ -16,6 +18,8 @@ function Found_form({onClose, onUpdate}){
             item_found: found_formData.item_found,
             location:found_formData.location,
             contact_info:found_formData.contact_info,
+            description:found_formData.description,
+            date:found_formData.date,
         }
         
         const updatedList = [new_found_item, ...existing_found];
@@ -53,6 +57,21 @@ function Found_form({onClose, onUpdate}){
                       type="text" 
                       placeholder="Mobile Number"
                       onChange={(e) => setFound_FormData({...found_formData, contact_info: e.target.value})}/>
+                </div>
+
+                <div className="form-group">
+                    <label>Description</label>
+                    <input 
+                      type="text" 
+                      placeholder="Item Details"
+                      onChange={(e) => setFound_FormData({...found_formData, description: e.target.value})}/>
+                </div>
+
+                <div className="form-group">
+                    <label>Date Found</label>
+                    <input 
+                      type="date"  
+                      onChange={(e) => setFound_FormData({...found_formData, date: e.target.value})} />
                 </div>
 
                 <button type="submit" className="submit-btn">Submit</button>

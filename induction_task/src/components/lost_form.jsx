@@ -6,6 +6,8 @@ function Lost_form({onClose, onUpdate}){
         item_lost:'',
         location:'',
         contact_info:'',
+        description:'',
+        date:'',
     });
 
     const handleSubmit = (e)=>{
@@ -16,6 +18,8 @@ function Lost_form({onClose, onUpdate}){
             item_lost: formData.item_lost,
             location:formData.location,
             contact_info:formData.contact_info,
+            description: formData.description,
+            date:formData.date,
         }
         
         const updatedList = [new_lost_item, ...existing_lost];
@@ -54,6 +58,21 @@ function Lost_form({onClose, onUpdate}){
                       type="text" 
                       placeholder="Mobile Number"
                       onChange={(e) => setFormData({...formData, contact_info: e.target.value})}/>
+                </div>
+
+                <div className="form-group">
+                    <label>Description</label>
+                    <input 
+                      type="text" 
+                      placeholder="Item Details"
+                      onChange={(e) => setFormData({...formData, description: e.target.value})}/>
+                </div>
+
+                <div className="form-group">
+                    <label>Date Lost</label>
+                    <input 
+                    type="date"
+                    onChange={(e) => setFormData({...formData, date: e.target.value})}/>
                 </div>
 
                 <button type="submit" className="submit-btn">Submit Report</button>
